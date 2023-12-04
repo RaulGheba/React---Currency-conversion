@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 export default function App() {
-  const [currencyToConvert, setCurrencyToConvert] = useState("USD");
+  const [currencyToConvert, setCurrencyToConvert] = useState("EUR");
   const [currencyToConvertTo, setCurrencyToConvertTo] = useState("USD");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(1);
   const [output, setOutput] = useState(null);
   // const call = `https://api.frankfurter.app/latest?amount=100&from=${currencyToConvert}&to=${currencyToConvertTo}`;
 
@@ -44,7 +44,12 @@ export default function App() {
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <p>Converted sum: {output}</p>
+      <p>
+        {currencyToConvert === currencyToConvertTo
+          ? "same currency"
+          : `Converted
+        sum: ${output} ${currencyToConvertTo}`}
+      </p>
     </Box>
   );
 }
